@@ -149,7 +149,7 @@ const courses = [
         description: "طبق مهاراتك في البرمجة باستخدام بايثون لحل مهام نظم المعلومات الجغرافية.",
         duration: "12 أسبوعًا • مستوى متوسط",
         link: `course/pythongis/${lang}`,
-        image: "/images/pythonGIS.png",
+        image: "/images/python.webp",
         cta: "المزيد",
       },
       
