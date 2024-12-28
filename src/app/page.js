@@ -1,101 +1,179 @@
-import Image from "next/image";
+import Head from 'next/head';
+import CourseStats from "./components/CourseStatItem";
+import FaqSection from "./components/FaqSection";
+import CustomerReviews from './components/CustomerReviews';
+import CertificatesSlider from './components/CertificatesSlider';
+import FirstSection from './components/firstSession';
+import FeaturedCourses from './components/FeaturedCourses';
+
+const Data = {
+   courseDuration: "8 أسابيع",
+   courseLectures: "16 محاضرة",
+   courseHours: "30 ساعة",
+   courseInstructor: "م محمد أشرف",
+   courseStudents: "27",
+   courseMode: "أونلاين"
+};
+
+const faqData = [
+  {
+    question: "كيف أبدأ بشكل صحيح في معالجة صور الدرون؟",
+    answer:
+      "لا تقلق إذا كنت تشعر أن المجال صعب. الدورة تم تصميمها بطريقة تجعل البدء سهلاً للمبتدئين مع خطوات واضحة ومباشرة لتطوير مهاراتك."
+  },
+  {
+    question: "هل ستكون هناك تسجيلات فيديو للمراجعة لاحقًا؟",
+    answer:
+      "بالتأكيد! يتم تسجيل جميع الجلسات ويمكنك الوصول إليها في أي وقت. هذا يضمن أنك تستطيع مراجعة المحاضرات أو اللحاق بما فاتك."
+  },
+  {
+    question: "هل سأحصل على شهادة معتمدة بعد الانتهاء؟",
+    answer:
+      "نعم، عند إتمام الدورة بنجاح، ستحصل على شهادة معتمدة في معالجة صور الدرون، مما يعزز ملفك المهني."
+  },
+  {
+    question: "هل الدورة مناسبة للمبتدئين أم للمتقدمين؟",
+    answer:
+      "تم تصميم الدورة خصيصًا للمبتدئين. تغطي الدورة الأساسيات اللازمة لمعالجة صور الدرون بشكل صحيح وتساعد على بناء قاعدة قوية."
+  },
+  {
+    question: "هل تُعد الدورة المشاركين لوظائف متعلقة بالمجال؟",
+    answer:
+      "نعم، تُعد الدورة المشاركين للوظائف المتعلقة بمعالجة صور الدرون والتطبيقات العملية في مجال المساحة."
+  }
+];
+
+const testimonials = [
+    { 
+      name: 'حمد العتيبي', 
+      opinion: "الدورة رهيبة جدًا، تعلمت أشياء ما كنت متخيل إنها بتكون بهالسهولة! والمدرب شرحه واضح ويجاوب على كل الأسئلة." 
+    },
+    { 
+      name: 'احمد شحتا احمد', 
+      opinion: "الدورة دي بصراحة كانت فوق توقعاتي، كل حاجة كانت واضحة ومنظمة، وأنا استفدت كتير." 
+    },
+    { 
+      name: 'اروى السودانية', 
+      opinion: "الدورة دي زاتا فادتني شديد، حسيت إني بقيت جاهزة أخش سوق العمل بمعرفة واثقة." 
+    },
+    { 
+      name: 'ابو ابراهيم علاء', 
+      opinion: "أكتر حاجة عجبتني في الدورة إن المشاريع كانت واقعية وبتمس الشغل اللي ممكن نعمله بعد كده." 
+    },
+    { 
+      name: 'نور خالد', 
+      opinion: "بجد الدورة دي فتحت عيني على حاجات كتير في المجال ده، والمدرب كان متمكن جدًا في شرحه." 
+    },
+    { 
+      name: 'مي محمد', 
+      opinion: "كل حاجة في الدورة كانت سهلة ومفهومة، وفعلاً حسيت إني استفدت من كل دقيقة فيها." 
+    },
+  ];
+  
+
+const certificates = [
+  {
+    src: "/images/drone/drone (1).jpg",
+    alt: "شهادة معالجة صور الدرون",
+  },
+  {
+    src: "/images/drone/drone (1).jpeg",
+    alt: "شهادة معالجة صور الدرون",
+  },
+  {
+    src: "/images/drone/drone (3).jpg",
+    alt: "شهادة معالجة صور الدرون",
+  },
+  {
+    src: "/images/drone/drone (2).jpeg",
+    alt: "شهادة معالجة صور الدرون",
+  },
+  {
+    src: "/images/drone/drone (2).jpg",
+    alt: "شهادة معالجة صور الدرون",
+  }
+];
+
+const lang = "ar";
+const courses = [
+    {
+        title: "معالجة بيانات الليزر سكانر",
+        description: "تعلم كيفية معالجة وتحليل بيانات الليزر سكانر واستخدامها في تطبيقات متنوعة.",
+        duration: "4 أسابيع • مستوى متقدم",
+        link: `course/laserscanner/${lang}`,
+        image: "/images/Laser Scanner.png",
+        cta: "المزيد",
+      },      
+    {
+        title: "نظم المعلومات الجغرافية (GIS)",
+        description: "تعلم مفاهيم نظم المعلومات الجغرافية الأساسية وتطبيقاتها في العالم الحقيقي.",
+        duration: "12 أسبوعًا • مستوى مبتدئ",
+        link: `course/gis/${lang}`,
+        image: "/images/GIS.png",
+        cta: "المزيد",
+      },
+      {
+        title: "برمجة الويب",
+        description: "أتقن تطوير واجهات المستخدم والخوادم باستخدام أحدث الأدوات.",
+        duration: "24 أسبوعًا • مستوى مبتدئ",
+        link: `course/webcourse/${lang}`,
+        image: "/images/Mern stack.webp",
+        cta: "المزيد",
+      },
+      {
+        title: "نظم المعلومات الجغرافية على الويب",
+        description: "استكشف حلول نظم المعلومات الجغرافية المتقدمة للتطبيقات القائمة على الويب.",
+        duration: "30 أسبوعًا • مستوى متقدم",
+        link: `course/webgis/${lang}`,
+        image: "/images/web gis.png",
+        cta: "المزيد",
+      },
+      {
+        title: "الذكاء الجغرافي (GeoAI)",
+        description: "تعلم كيفية دمج الذكاء الاصطناعي مع نظم المعلومات الجغرافية.",
+        duration: "2 أسبوع • مستوى متقدم",
+        link: `course/geoai/${lang}`,
+        image: "/images/geoai.png",
+        cta: "المزيد",
+      },
+      {
+        title: "مشاريع نظم المعلومات الجغرافية",
+        description: "اكتسب خبرة عملية من خلال تنفيذ مهام مشاريع نظم المعلومات الجغرافية.",
+        duration: "4 أسابيع • مستوى متوسط",
+        link: `course/gisprojects/${lang}`,
+        image: "/images/gis projects.png",
+        cta: "المزيد",
+      },
+      {
+        title: "نظم المعلومات الجغرافية باستخدام بايثون",
+        description: "طبق مهاراتك في البرمجة باستخدام بايثون لحل مهام نظم المعلومات الجغرافية.",
+        duration: "12 أسبوعًا • مستوى متوسط",
+        link: `course/pythongis/${lang}`,
+        image: "/images/python GIS.png",
+        cta: "المزيد",
+      },
+      
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Head>
+        <title>معالجة صور الدرون</title>
+      </Head>
+      <FirstSection
+        introText="ازاي تصبح متخصص في معالجه صور الدرون"
+        introText2="كيف تبدا بشكل صحيح في معالجه صوره الدرون ولا تشعر ان المجال صعب"
+        videoUrl="https://www.youtube.com/embed/UnYRAP5OfI0"
+        consultationText="احجز مكالمتك المجانية"
+        consultationLink="https://wa.me/201040950801?text=أنا%20مهتم%20بدورة%20معالجة%20الصور%20بالدرون%20وأريد%20حجز%20مكالمة%20هاتفية%20أو%20من%20فضلك%20قم%20بتقديم%20لي%20كافة%20التفاصيل%20عن%20هذه%20الدورة"
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <CourseStats Data={Data} dir="rtl" />
+      <FaqSection faqData={faqData} dir="rtl" />
+      <CustomerReviews testimonials={testimonials} title="آراء المتدربين" dir="rtl" />
+      <CertificatesSlider certificates={certificates} title="الشهادات" dir="rtl" />
+      <FeaturedCourses courses={courses} dir="rtl" titleSection="الدورات المميزة" />
+    </>
   );
 }
