@@ -22,7 +22,7 @@ import {
     const isRTL = dir === "rtl"; // تحديد الاتجاه (يمين لليسار أو العكس)
   
     return (
-      <section className="py-10" dir={dir}>
+      <section className="py-10 bg-white" dir={dir}>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
             {statsData.map((stat, index) => (
@@ -48,7 +48,7 @@ const CourseStatsCard = ({ icon, title, subtitle }) => {
         <div className="flex items-center justify-center mb-4">
           <span className="text-indigo-600">{icon}</span>
         </div>
-        <h3 className="text-lg md:text-xl font-bold text-center mb-2">{title}</h3>
+        <h3 className="text-lg md:text-xl font-bold text-center mb-2 text-black">{title}</h3>
         <p className="text-sm md:text-gray-600 text-center">{subtitle}</p>
       </div>
     );
