@@ -16,7 +16,7 @@ const FaqSection = ({faqData , dir}) => {
           {faqData.map((faq, index) => (
             <div key={index} className="border border-gray-200 rounded-lg"  >
               <button
-                className="w-full p-4 text-left font-semibold flex justify-between items-center hover:bg-gray-50"
+                className="w-full p-4 text-black text-left font-semibold flex justify-between items-center hover:bg-gray-50"
                 onClick={() => toggleAnswer(index)}
                 aria-expanded={openIndex === index}
                 aria-controls={`answer-${index}`}
