@@ -12,7 +12,7 @@ const FirstSection = ({ introText,introText2, videoUrl, consultationText, consul
         </div>
       </section>
       
-      <section className="pt-4">
+      <section className="pt-4 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
           <p className="text-xl leading-relaxed text-black">{introText2}</p>
@@ -21,7 +21,7 @@ const FirstSection = ({ introText,introText2, videoUrl, consultationText, consul
       </section>
 
       {/* Course Preview Video */}
-      <section className="py-8">
+      <section className="py-8 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="relative pt-[56.25%] rounded-2xl overflow-hidden shadow-2xl">
@@ -38,7 +38,7 @@ const FirstSection = ({ introText,introText2, videoUrl, consultationText, consul
       </section>
 
       {/* Consultation Call */}
-      <section>
+      <section className='bg-white'>
         <div className="container mx-auto px-4 text-center">
           <a
             href={consultationLink}
