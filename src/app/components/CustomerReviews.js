@@ -8,9 +8,9 @@ import 'swiper/css/pagination';
 
 export default function TestimonialsSlider({ testimonials,title, dir }) {
   return (
-    <section className="py-10" dir={dir}>
+    <section className="py-10 bg-white" dir={dir}>
       <div className="container mx-auto px-4 relative">
-        <h2 className="text-4xl font-bold text-center mb-12">{title}</h2>
+        <h2 className="text-4xl font-bold text-center mb-12 text-black">{title}</h2>
           {/* أزرار التنقل المخصصة */}
           <div
             className="custom-btn-next flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 text-white absolute top-1/2 right-1 transform -translate-y-1/2 z-10 cursor-pointer hover:bg-gray-900"
@@ -50,7 +50,7 @@ export default function TestimonialsSlider({ testimonials,title, dir }) {
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
               <div className="bg-white p-8 rounded-2xl shadow-lg testimonial-card mb-10">
-                <h4 className="text-xl font-bold mb-4">{testimonial.name}</h4>
+                <h4 className="text-xl font-bold mb-4 text-black">{testimonial.name}</h4>
                 <p className="text-gray-700">{testimonial.opinion}</p>
               </div>
             </SwiperSlide>
